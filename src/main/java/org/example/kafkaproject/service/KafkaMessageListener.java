@@ -21,9 +21,12 @@ public class KafkaMessageListener {
     @Async
     @KafkaListener(topics = "newTopic", groupId = "gary-group")
     public void consume(String message) throws InterruptedException {
+        log.info("----------------------------------------------");
         log.info("Sleep for 1 second");
         TimeUnit.SECONDS.sleep(1);
         log.info("Received message: {}", message);
         log.info("Active threads: {}", ((ThreadPoolTaskExecutor) taskExecutor).getActiveCount());
+        log.info("QueueSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getQueueSize());
+        log.info("PoolSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getPoolSize());
     }
 }
