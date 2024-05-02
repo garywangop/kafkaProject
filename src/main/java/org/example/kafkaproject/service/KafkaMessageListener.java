@@ -14,19 +14,21 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 public class KafkaMessageListener {
-    @Autowired
-    @Qualifier("applicationTaskExecutor")
-    private TaskExecutor taskExecutor;
+//    @Autowired
+//    @Qualifier("applicationTaskExecutor")
+//    private TaskExecutor taskExecutor;
 
-    @Async
+    @Async(value = "asyncExecutor")
     @KafkaListener(topics = "newTopic", groupId = "gary-group")
     public void consume(String message) throws InterruptedException {
         log.info("----------------------------------------------");
-        log.info("Sleep for 1 second");
+//        log.info("Sleep for 1 second");
         TimeUnit.SECONDS.sleep(1);
         log.info("Received message: {}", message);
-        log.info("Active threads: {}", ((ThreadPoolTaskExecutor) taskExecutor).getActiveCount());
-        log.info("QueueSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getQueueSize());
-        log.info("PoolSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getPoolSize());
+//        log.info("Active threads: {}", ((ThreadPoolTaskExecutor) taskExecutor).getActiveCount());
+//        log.info("QueueSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getQueueSize());
+//        log.info("PoolSize: {}", ((ThreadPoolTaskExecutor) taskExecutor).getPoolSize());
+
+        log.info("Thread: {}", Thread.currentThread().getName());
     }
 }
