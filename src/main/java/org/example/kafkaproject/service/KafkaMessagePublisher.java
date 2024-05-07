@@ -23,6 +23,5 @@ public class KafkaMessagePublisher {
                         message + "] due to : " + ex.getMessage());
             }
         });
-
     }
 }

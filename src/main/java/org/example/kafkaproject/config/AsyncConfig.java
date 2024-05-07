@@ -17,7 +17,7 @@ public class AsyncConfig implements AsyncConfigurer {
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(2); // 设置核心线程数
-        executor.setMaxPoolSize(5); // 设置最大线程数
+        executor.setMaxPoolSize(2); // 设置最大线程数
 //        executor.setQueueCapacity(3); // 设置队列容量
         executor.setThreadNamePrefix("Async-");
         executor.initialize();
